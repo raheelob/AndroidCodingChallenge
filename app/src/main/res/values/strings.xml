@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">AndroidCodingChallenge</string>
+    <string name="action_settings">Settings</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+    <string name="period_1">Period- 1</string>
+    <string name="period_7">Period- 7</string>
+    <string name="period_30">Period - 30</string>
+    <string name="price">Price</string>
+    <string name="unfavorite">unfavorite</string>
+    <string name="favorite">favorite</string>
+    <string name="problem">problem</string>
+    <string name="retry">retry</string>
+    <string name="app_footer_text">© Click to see architecture used == ></string>
+    <string name="available">Available</string>
+    <string name="not_available">Not Available</string>
+    <string name="all">All</string>
+    <string name="getting_data_from_the_api">Getting data from the API…</string>
+</resources>

@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <variable
+            name="productItem"
+            type="com.example.androidcodingchallenge.data.responses.models.ProductsItem" />
+
+        <variable
+            name="clickListener"
+            type="com.example.androidcodingchallenge.view.adapters.ProductListingAdapter.ProductItemClickListener" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="1dp"
+        android:onClick="@{() -> clickListener.onClick(productItem)}">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/startGuideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent=".02" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/endGuideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent=".98" />
+
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/topGuideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent=".05" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/bottomGuideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent=".95" />
+
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/ivProductImage"
+            imagePath="@{productItem.imageURL}"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            app:layout_constraintEnd_toEndOf="@+id/endGuideline"
+            app:layout_constraintTop_toTopOf="@id/topGuideline" />
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvProductName"
+            style="@style/Title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:lines="1"
+            android:maxLines="1"
+            android:text="@{productItem.name}"
+            app:layout_constraintEnd_toStartOf="@+id/ivProductImage"
+            app:layout_constraintStart_toEndOf="@+id/startGuideline"
+            app:layout_constraintTop_toTopOf="@id/topGuideline"
+            tools:text="Product Name" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvDate"
+            style="@style/Description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:layout_constraintStart_toEndOf="@+id/startGuideline"
+            app:layout_constraintTop_toTopOf="@id/topGuideline"
+            app:productDate="@{productItem.releaseDate}"
+            tools:text="1.March.1989" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvDescription"
+            style="@style/Description"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="@{productItem.description}"
+            app:layout_constraintEnd_toStartOf="@+id/ivProductImage"
+            app:layout_constraintStart_toEndOf="@+id/startGuideline"
+            app:layout_constraintTop_toBottomOf="@id/tvProductName"
+            tools:text="Item description is here here here !!" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvProductPrice"
+            android:visibility="gone"
+            style="@style/Title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="@string/price"
+            app:layout_constraintBottom_toBottomOf="@id/bottomGuideline"
+            app:layout_constraintStart_toEndOf="@+id/startGuideline"
+            app:layout_constraintTop_toBottomOf="@id/tvDescription" />
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvPrice"
+            style="@style/Description.Small"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="5dp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@id/bottomGuideline"
+            app:layout_constraintStart_toEndOf="@id/tvProductPrice"
+            app:layout_constraintTop_toBottomOf="@id/tvDescription"
+            app:productPrice="@{productItem.price}"
+            tools:text="0.00 $" />
+
+        <androidx.appcompat.widget.AppCompatRatingBar
+            android:id="@+id/rbProductRating"
+            style="@style/Custom_Rating_Bar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:clickable="false"
+            android:isIndicator="true"
+            android:numStars="5"
+            android:rating="@{productItem.rating.floatValue()}"
+            app:layout_constraintBottom_toBottomOf="@id/bottomGuideline"
+            app:layout_constraintStart_toEndOf="@+id/startGuideline"
+            app:layout_constraintTop_toBottomOf="@id/tvDescription"
+            tools:rating="1.0" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
